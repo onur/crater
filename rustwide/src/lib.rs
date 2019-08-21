@@ -6,16 +6,20 @@
 //!
 //! [crater]: https://github.com/rust-lang/crater
 
+mod build;
 pub mod cmd;
 mod crates;
 pub mod logging;
 mod native;
+mod prepare;
 mod toolchain;
 mod tools;
 mod utils;
 mod workspace;
 
+pub use crate::build::{Build, BuildDirectory};
 pub use crate::crates::Crate;
+pub use crate::prepare::PrepareError;
 pub use crate::toolchain::Toolchain;
 pub use crate::workspace::{Workspace, WorkspaceBuilder};
 

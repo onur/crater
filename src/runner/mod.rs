@@ -1,8 +1,6 @@
 mod graph;
-mod prepare;
 mod tasks;
 mod test;
-mod toml_frobber;
 mod unstable_features;
 mod worker;
 
@@ -66,11 +64,6 @@ pub fn run_ex<DB: WriteResults + Sync>(
 
     let res = run_ex_inner(ex, workspace, crates, db, threads_count, config);
 
-    // Remove all the target dirs even if the experiment failed
-    let target_dir = &crate::toolchain::ex_target_dir(&ex.name);
-    if target_dir.exists() {
-        utils::fs::remove_dir_all(target_dir)?;
-    }
 
     res
 }
